@@ -29,10 +29,15 @@ public class App {
 
             System.out.println("Ingrese las 3 notas del estudiante:");
             for (byte j = 0; j < 3; j++) {
-                System.out.print("Nota " + (j + 1) + ": ");
-                notas[i][j] = scanner.nextFloat();
+                do {
+                    System.out.print("Nota " + (j + 1) + " (0.0 a 5.0): ");
+                    notas[i][j] = scanner.nextFloat();
+                    if (notas[i][j] < 0.0 || notas[i][j] > 5.0) {
+                        System.out.println("Por favor ingrese una nota válida.");
+                    }
+                } while (notas[i][j] < 0.0 || notas[i][j] > 5.0);
+                scanner.nextLine(); // Limpiar el buffer
             }
-            scanner.nextLine();
         }
 
         for (byte i = 0; i < NUM_ESTUDIANTES; i++) {
@@ -49,13 +54,51 @@ public class App {
             }
         }
 
-        System.out.println("\n Reporte final de estudiantes ");
+        System.out.println("======================================");
+        System.out.println("       Reporte Final de Estudiantes   ");
+        System.out.println("======================================");
         System.out.println("Nombre\tIdentificación\tPromedio\tEstado");
         for (int i = 0; i < NUM_ESTUDIANTES; i++) {
             System.out.println(nombres[i] + "\t" + identificaciones[i] + "\t"
                     + promedios[i] + "\t" + estadoDeAprobacion[i]);
+
+            if (estadoDeAprobacion[i].equals("Aprobado")) {
+                System.out.println("¡Felicidades, " + nombres[i] + "! Sigue así.");
+            } else {
+                System.out.println("Ánimo, " + nombres[i] + ". Esfuérzate más para la próxima.");
+            }
+
+        }
+        float mejorPromedio = 0f;
+        int indiceMejorEstudiante = 0;
+
+        for (byte i = 0; i < NUM_ESTUDIANTES; i++) {
+            if (promedios[i] > mejorPromedio) {
+                mejorPromedio = promedios[i];
+                indiceMejorEstudiante = i;
+            }
         }
 
-        scanner.close();
+        System.out.println("\nEl estudiante con el mejor promedio es:");
+        System.out.println(nombres[indiceMejorEstudiante] + " (ID: " + identificaciones[indiceMejorEstudiante]
+                + ") con un promedio de " + String.format("%.2f", mejorPromedio));
+
+        int numAprobados = 0, numReprobados = 0;
+        float promedioGeneral = 0f;
+
+        for (byte i = 0; i < NUM_ESTUDIANTES; i++) {
+            promedioGeneral += promedios[i];
+            if (estadoDeAprobacion[i].equals("Aprobado")) {
+                numAprobados++;
+            } else {
+                numReprobados++;
+            }
+        }
+        promedioGeneral /= NUM_ESTUDIANTES;
+
+        System.out.println("\n--- Resumen Estadístico ---");
+        System.out.println("Estudiantes aprobados: " + numAprobados);
+        System.out.println("Estudiantes reprobados: " + numReprobados);
+        System.out.printf("Promedio general: %.2f\n", promedioGeneral);
     }
 }
