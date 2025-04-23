@@ -19,7 +19,7 @@ public class App {
 
         System.out.println("Datos de los estudiantes");
         for (byte i = 0; i < NUM_ESTUDIANTES; i++) {
-            System.out.println("\nIngrese la información del estudiante " + (i + 1) + ":");
+            System.out.println("\nIngrese la informacion del estudiante " + (i + 1) + ":");
 
             System.out.print("Nombre: ");
             nombres[i] = scanner.nextLine();
@@ -33,7 +33,7 @@ public class App {
                     System.out.print("Nota " + (j + 1) + " (0.0 a 5.0): ");
                     notas[i][j] = scanner.nextFloat();
                     if (notas[i][j] < 0.0 || notas[i][j] > 5.0) {
-                        System.out.println("Por favor ingrese una nota válida.");
+                        System.out.println("Por favor ingrese una nota valida.");
                     }
                 } while (notas[i][j] < 0.0 || notas[i][j] > 5.0);
                 scanner.nextLine();
@@ -96,9 +96,9 @@ public class App {
         }
         promedioGeneral /= NUM_ESTUDIANTES;
 
-        System.out.println("\n--- Resumen Estadístico ---");
+        System.out.println("\n--- Resumen Estadistico ---");
         System.out.println("Estudiantes aprobados: " + numAprobados);
         System.out.println("Estudiantes reprobados: " + numReprobados);
-        System.out.printf("Promedio general: ", promedioGeneral);
+        System.out.printf("Promedio general: " + promedioGeneral);
     }
 }
