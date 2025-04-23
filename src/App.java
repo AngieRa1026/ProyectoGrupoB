@@ -36,7 +36,7 @@ public class App {
                         System.out.println("Por favor ingrese una nota válida.");
                     }
                 } while (notas[i][j] < 0.0 || notas[i][j] > 5.0);
-                scanner.nextLine(); // Limpiar el buffer
+                scanner.nextLine();
             }
         }
 
@@ -63,9 +63,9 @@ public class App {
                     + promedios[i] + "\t" + estadoDeAprobacion[i]);
 
             if (estadoDeAprobacion[i].equals("Aprobado")) {
-                System.out.println("¡Felicidades, " + nombres[i] + "! Sigue así.");
+                System.out.println("¡Felicidades, " + nombres[i] + "! Sigue asi.");
             } else {
-                System.out.println("Ánimo, " + nombres[i] + ". Esfuérzate más para la próxima.");
+                System.out.println("Animo, " + nombres[i] + ". Esfuerzate mas para la proxima.");
             }
 
         }
@@ -81,7 +81,7 @@ public class App {
 
         System.out.println("\nEl estudiante con el mejor promedio es:");
         System.out.println(nombres[indiceMejorEstudiante] + " (ID: " + identificaciones[indiceMejorEstudiante]
-                + ") con un promedio de " + String.format("%.2f", mejorPromedio));
+                + ") con un promedio de " + mejorPromedio);
 
         int numAprobados = 0, numReprobados = 0;
         float promedioGeneral = 0f;
@@ -99,6 +99,6 @@ public class App {
         System.out.println("\n--- Resumen Estadístico ---");
         System.out.println("Estudiantes aprobados: " + numAprobados);
         System.out.println("Estudiantes reprobados: " + numReprobados);
-        System.out.printf("Promedio general: %.2f\n", promedioGeneral);
+        System.out.printf("Promedio general: ", promedioGeneral);
     }
 }
