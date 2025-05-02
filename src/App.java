@@ -11,7 +11,7 @@ public class App {
         final byte NUM_ESTUDIANTES = 5;
 
         String[] nombres = new String[NUM_ESTUDIANTES];
-        String[] identificaciones = new String[NUM_ESTUDIANTES];
+        int[] identificaciones = new int[NUM_ESTUDIANTES];
         float[] promedios = new float[NUM_ESTUDIANTES];
         String[] estadoDeAprobacion = new String[NUM_ESTUDIANTES];
 
